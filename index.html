@@ -1,52 +1,187 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FilmKita</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Film Populer - Nonton Gratis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+    }
+    header h1 {
+      color: #ffcc00;
+    }
+    nav {
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      gap: 20px;
+    }
+    nav a {
+      color: #ffcc00;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #ff9900;
+    }
+    .film-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .film-card {
+      background-color: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .film-card:hover {
+      transform: scale(1.05);
+    }
+    .film-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .film-card h3 {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #ffcc00;
+    }
+    .tonton-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 8px 12px;
+      background-color: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    .tonton-btn:hover {
+      background-color: #ff9900;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #222;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="navbar">
-        <div class="logo">🎬 FilmKita</div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Kategori</a>
-            <a href="#">Tentang</a>
-            <a href="#">Kontak</a>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Nikmati Film Favorit Anda</h1>
-        <p>Streaming gratis dan legal dengan kualitas terbaik</p>
-        <a href="#list" class="btn">Lihat Film</a>
-    </section>
+<header>
+  <h1>Film Populer</h1>
+  <p>Nonton gratis film-film terbaik langsung dari mirror aman</p>
+</header>
 
-    <!-- List Film -->
-    <section id="list" class="film-section">
-        <h2>Film Terbaru</h2>
-        <div class="film-grid">
-            <div class="film-card">
-                <img src="https://via.placeholder.com/300x450" alt="Film 1">
-                <h3>Judul Film 1</h3>
-            </div>
-            <div class="film-card">
-                <img src="https://via.placeholder.com/300x450" alt="Film 2">
-                <h3>Judul Film 2</h3>
-            </div>
-            <div class="film-card">
-                <img src="https://via.placeholder.com/300x450" alt="Film 3">
-                <h3>Judul Film 3</h3>
-            </div>
-        </div>
-    </section>
+<!-- Menu Navigasi -->
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Daftar Film</a>
+  <a href="#">Genre</a>
+  <a href="#">Kontak</a>
+</nav>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 FilmKita. Semua Hak Dilindungi.</p>
-    </footer>
+<!-- Iklan Adsterra di atas -->
+<div style="text-align:center; margin:20px 0;">
+  <iframe src="https://www.profitableratecpm.com/riqpsj9yn?key=b724fc510c56bd29a7f46475c991ea71" 
+          style="width:300px;height:250px;border:none;overflow:hidden;" scrolling="no"></iframe>
+</div>
+
+<!-- Daftar Film -->
+<div class="film-container">
+
+  <!-- Film Card -->
+  <div class="film-card">
+    <img src="https://image.tmdb.org/t/p/w500/8bcoRX3hQRHufLPSDREdvr3YMXx.jpg" alt="Deadpool & Wolverine">
+    <h3>Deadpool & Wolverine</h3>
+    <a href="https://lk21official.co/deadpool-wolverine-2024/" class="tonton-btn" target="_blank">Tonton</a>
+  </div>
+
+  <div class="film-card">
+    <img src="https://image.tmdb.org/t/p/w500/pYwZdnXVnVxAr7dx4MEK7tTK9gI.jpg" alt="Inside Out 2">
+    <h3>Inside Out 2</h3>
+    <a href="https://lk21official.co/inside-out-2-2024/" class="tonton-btn" target="_blank">Tonton</a>
+  </div>
+
+  <div class="film-card">
+    <img src="https://image.tmdb.org/t/p/w500/ehumsuIBbgAe1hg343oszCLrAfI.jpg" alt="Despicable Me 4">
+    <h3>Despicable Me 4</h3>
+    <a href="https://lk21official.co/despicable-me-4-2024/" class="tonton-btn" target="_blank">Tonton</a>
+  </div>
+
+  <div class="film-card">
+    <img src="https://image.tmdb.org/t/p/w500/k3mW4qfJo6SKqe6laRyNGnbB9n5.jpg" alt="Bad Boys 4: Ride or Die">
+    <h3>Bad Boys 4: Ride or Die</h3>
+    <a href="https://lk21official.co/bad-boys-ride-or-die-2024/" class="tonton-btn" target="_blank">Tonton</a>
+  </div>
+
+  <div class="film-card">
+    <img src="https://image.tmdb.org/t/p/w500/dzAeC7V0LQWvKYa6RzG3lx2RrXQ.jpg" alt="Furiosa: A Mad Max Saga">
+    <h3>Furiosa: A Mad Max Saga</h3>
+    <a href="https://lk21official.co/furiosa-a-mad-max-saga-2024/" class="tonton-btn" target="_blank">Tonton</a>
+  </div>
+
+  <div class="film-card">
+    <img src="https://image.tmdb.org/t/p/w500/7IJ7F8tX7IAkpUdaGovOBJqORnJ.jpg" alt="Kingdom of the Planet of the Apes">
+    <h3>Kingdom of the Planet of the Apes</h3>
+    <a href="https://lk21official.co/kingdom-of-the-planet-of-the-apes-2024/" class="tonton-btn" target="_blank">Tonton</a>
+  </div>
+
+  <div class="film-card">
+    <img src="https://image.tmdb.org/t/p/w500/f3pAR6GbbTEiYyYog8Lk7Q0e9tG.jpg" alt="A Quiet Place: Day One">
+    <h3>A Quiet Place: Day One</h3>
+    <a href="https://lk21official.co/a-quiet-place-day-one-2024/" class="tonton-btn" target="_blank">Tonton</a>
+  </div>
+
+  <div class="film-card">
+    <img src="https://image.tmdb.org/t/p/w500/aosm8NMQ3UyoBVpSxyimorCQykC.jpg" alt="IF">
+    <h3>IF</h3>
+    <a href="https://lk21official.co/if-2024/" class="tonton-btn" target="_blank">Tonton</a>
+  </div>
+
+  <div class="film-card">
+    <img src="https://image.tmdb.org/t/p/w500/6YI16g3K5ZSZEm2xQo2QwBU8rAi.jpg" alt="The Garfield Movie">
+    <h3>The Garfield Movie</h3>
+    <a href="https://lk21official.co/the-garfield-movie-2024/" class="tonton-btn" target="_blank">Tonton</a>
+  </div>
+
+  <div class="film-card">
+    <img src="https://image.tmdb.org/t/p/w500/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg" alt="The Watchers">
+    <h3>The Watchers</h3>
+    <a href="https://lk21official.co/the-watchers-2024/" class="tonton-btn" target="_blank">Tonton</a>
+  </div>
+
+</div>
+
+<!-- Iklan Adsterra di bawah -->
+<div style="text-align:center; margin:20px 0;">
+  <iframe src="https://www.profitableratecpm.com/riqpsj9yn?key=b724fc510c56bd29a7f46475c991ea71" 
+          style="width:300px;height:250px;border:none;overflow:hidden;" scrolling="no"></iframe>
+</div>
+
+<footer>
+  &copy; 2025 Film Populer. Semua Hak Dilindungi.
+</footer>
+
 </body>
 </html>
