@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Film Trending Minggu Ini</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #111; color: #fff; text-align: center; }
+    h1 { color: #ffcc00; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 15px 0; }
+    a { color: #00ffff; text-decoration: none; font-size: 18px; }
+    a:hover { text-decoration: underline; }
+</style>
+<script>
+    // Popunder Adsterra
+    document.addEventListener('DOMContentLoaded', function() {
+        let adLinks = [
+            "https://www.profitableratecpm.com/riqpsj9yn?key=b724fc510c56bd29a7f46475c991ea71",
+            "https://otieu.com/4/7070719"
+        ];
+        document.querySelectorAll('a.film-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                window.open(adLinks[Math.floor(Math.random() * adLinks.length)], '_blank');
+            });
+        });
+    });
+</script>
+</head>
+<body>
+    <h1>🎬 Film Trending Minggu Ini</h1>
+    <p>Klik judul film untuk menonton gratis</p>
+    <ul>
+        <li><a href="https://contoh-situsfilm1.com" target="_blank" class="film-link">1. Deadpool & Wolverine</a></li>
+        <li><a href="https://contoh-situsfilm2.com" target="_blank" class="film-link">2. Inside Out 2</a></li>
+        <li><a href="https://contoh-situsfilm3.com" target="_blank" class="film-link">3. Furiosa: A Mad Max Saga</a></li>
+        <li><a href="https://contoh-situsfilm4.com" target="_blank" class="film-link">4. Kingdom of the Planet of the Apes</a></li>
+        <li><a href="https://contoh-situsfilm5.com" target="_blank" class="film-link">5. Dune: Part Two</a></li>
+    </ul>
+</body>
+</html>
