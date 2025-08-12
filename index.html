@@ -1,41 +1,329 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Film Trending Minggu Ini</title>
-<style>
-    body { font-family: Arial, sans-serif; background: #111; color: #fff; text-align: center; }
-    h1 { color: #ffcc00; }
-    ul { list-style: none; padding: 0; }
-    li { margin: 15px 0; }
-    a { color: #00ffff; text-decoration: none; font-size: 18px; }
-    a:hover { text-decoration: underline; }
-</style>
-<script>
-    // Popunder Adsterra
-    document.addEventListener('DOMContentLoaded', function() {
-        let adLinks = [
-            "https://www.profitableratecpm.com/riqpsj9yn?key=b724fc510c56bd29a7f46475c991ea71",
-            "https://otieu.com/4/7070719"
-        ];
-        document.querySelectorAll('a.film-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                window.open(adLinks[Math.floor(Math.random() * adLinks.length)], '_blank');
-            });
-        });
-    });
-</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Template Film - Mobile First</title>
+  <style>
+    :root{
+      --accent:#e91e63;
+      --accent-dark:#c41457;
+      --bg:#0b0b0b;
+      --card:#111;
+      --muted:#9aa1a8;
+      --white:#fff;
+      --radius:10px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{height:100%;}
+    body{
+      margin:0;
+      background:linear-gradient(#060606,#0b0b0b);
+      color:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding-bottom:76px; /* space for bottom nav */
+    }
+
+    /* header */
+    .topbar{
+      background:var(--accent);
+      padding:12px 14px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      position:sticky;
+      top:0;
+      z-index:30;
+    }
+    .menu-btn{width:28px;height:28px;background:transparent;border:0;color:#fff;font-size:22px}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      flex:1;
+    }
+    .brand-logo{
+      width:28px;height:28px;border-radius:6px;background:#fff3;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);
+    }
+    .brand h1{font-size:16px;margin:0;letter-spacing:0.5px}
+
+    .top-actions{display:flex;gap:8px}
+    .top-actions button{background:transparent;border:0;color:#fff;font-size:18px}
+
+    /* carousel */
+    .carousel-wrap{padding:18px 12px 0}
+    .carousel{
+      display:flex;
+      gap:12px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      padding-bottom:8px;
+    }
+    .carousel::-webkit-scrollbar{display:none}
+    .poster{
+      min-width:140px;
+      scroll-snap-align:center;
+      border-radius:8px;
+      overflow:hidden;
+      position:relative;
+      background:#222;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+    .poster img{width:100%;height:220px;object-fit:cover;display:block}
+    .poster .meta{
+      position:absolute;left:8px;bottom:8px;color:#fff;
+      text-shadow:0 1px 6px rgba(0,0,0,0.6);
+      font-size:13px;
+    }
+
+    .btn-primary{
+      display:block;
+      width:calc(100% - 48px);
+      margin:14px auto;
+      background:var(--accent);
+      border-radius:8px;
+      padding:12px;
+      text-align:center;
+      color:var(--white);
+      font-weight:600;
+      border:2px solid rgba(255,255,255,0.04);
+      box-shadow:0 6px 18px rgba(233,30,99,0.18);
+    }
+
+    /* notification box */
+    .notice{
+      margin:12px;
+      background:linear-gradient(#eaf7ef,#edf9f7);
+      color:#2a2a2a;
+      padding:12px;
+      border-radius:8px;
+      font-size:14px;
+    }
+    .notice a{color:#c2185b;font-weight:600;text-decoration:none}
+
+    /* section */
+    .section{
+      margin:12px;
+      background:#0f0f0f;
+      border-radius:10px;
+      padding:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.5);
+    }
+    .section .title{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;
+    }
+    .section h2{margin:0;font-size:16px}
+    .btn-small{
+      background:var(--accent-dark);
+      padding:8px 10px;border-radius:8px;border:0;color:#fff;font-weight:600;font-size:13px;
+    }
+
+    /* grid list */
+    .grid{
+      display:flex;
+      gap:12px;
+      overflow-x:auto;
+      padding-bottom:8px;
+    }
+    .card{
+      min-width:120px;
+      background:var(--card);
+      border-radius:8px;
+      overflow:hidden;
+      position:relative;
+      scroll-snap-align:start;
+      box-shadow:0 6px 12px rgba(0,0,0,0.6);
+    }
+    .card img{width:100%;height:160px;object-fit:cover;display:block}
+    .card .title{
+      padding:8px;font-size:13px;color:var(--white);
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+
+    /* badges */
+    .badge{
+      position:absolute;left:8px;top:8px;background:rgba(0,0,0,0.6);
+      padding:4px 6px;border-radius:6px;font-size:12px;display:flex;align-items:center;gap:6px;color:#fff;
+    }
+    .badge.star{background:linear-gradient(90deg,#f6c042,#f39c12);color:#000;font-weight:700}
+    .badge.hd{right:8px;left:auto;background:#1b5e20;border-radius:6px;padding:4px 6px;font-size:12px;color:#dff0d8}
+
+    /* floating arrow */
+    .scroll-arrow{
+      position:absolute;right:12px;bottom:80px;background:var(--accent);
+      width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    /* bottom nav */
+    .bottom-nav{
+      position:fixed;left:0;right:0;bottom:0;height:64px;background:#151515;border-top:1px solid #222;display:flex;justify-content:space-around;align-items:center;padding:6px 12px;z-index:40;
+    }
+    .nav-item{flex:1;text-align:center;color:var(--muted);font-size:12px}
+    .nav-item .icon{display:block;font-size:20px;margin-bottom:4px}
+    .nav-item.active{color:var(--accent)}
+
+    /* responsiveness larger screens */
+    @media(min-width:900px){
+      body{padding:20px;}
+      .carousel-wrap{max-width:980px;margin:0 auto}
+      .section{max-width:980px;margin:12px auto}
+      .grid{flex-wrap:wrap;overflow:visible}
+      .card{min-width:170px}
+    }
+  </style>
 </head>
 <body>
-    <h1>🎬 Film Trending Minggu Ini</h1>
-    <p>Klik judul film untuk menonton gratis</p>
-    <ul>
-        <li><a href="https://contoh-situsfilm1.com" target="_blank" class="film-link">1. Deadpool & Wolverine</a></li>
-        <li><a href="https://contoh-situsfilm2.com" target="_blank" class="film-link">2. Inside Out 2</a></li>
-        <li><a href="https://contoh-situsfilm3.com" target="_blank" class="film-link">3. Furiosa: A Mad Max Saga</a></li>
-        <li><a href="https://contoh-situsfilm4.com" target="_blank" class="film-link">4. Kingdom of the Planet of the Apes</a></li>
-        <li><a href="https://contoh-situsfilm5.com" target="_blank" class="film-link">5. Dune: Part Two</a></li>
-    </ul>
+  <header class="topbar">
+    <button class="menu-btn" aria-label="menu">☰</button>
+    <div class="brand">
+      <div class="brand-logo">LK</div>
+      <h1>LAYARKACA21</h1>
+    </div>
+    <div class="top-actions">
+      <button aria-label="search">🔍</button>
+      <button aria-label="more">⋮</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="carousel-wrap">
+      <div class="carousel" id="carousel">
+        <!-- Poster item (repeat) -->
+        <article class="poster">
+          <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=600&q=80" alt="poster">
+          <div class="meta">The One (2022)</div>
+          <div class="badge star" style="top:10px;left:10px">★ 5.9</div>
+          <div class="badge hd" style="top:10px;right:10px;left:auto">HD</div>
+        </article>
+
+        <article class="poster">
+          <img src="https://images.unsplash.com/photo-1508253578933-c7d9140b5f5f?w=600&q=80" alt="poster">
+          <div class="meta">Pauline at the Beach (1983)</div>
+          <div class="badge star" style="top:10px;left:10px">★ 7.3</div>
+          <div class="badge hd" style="top:10px;right:10px;left:auto">HD</div>
+        </article>
+
+        <article class="poster">
+          <img src="https://images.unsplash.com/photo-1517604931442-7c7f9ff7b9c1?w=600&q=80" alt="poster">
+          <div class="meta">Bait (2025)</div>
+          <div class="badge star" style="top:10px;left:10px">★ 4.6</div>
+          <div class="badge hd" style="top:10px;right:10px;left:auto">HD</div>
+        </article>
+
+        <!-- add more posters as needed -->
+      </div>
+
+      <a class="btn-primary" href="#">LIHAT SEMUA FILM UNGGULAN</a>
+    </div>
+
+    <div class="notice">
+      <strong>PENTING.</strong> Catat / Bookmark alamat URL Lk21 <a href="#">https://lk21.example</a>. Gabung bersama group telegram Lk21 di <a href="#">Lk21Telegram</a>.
+    </div>
+
+    <section class="section">
+      <div class="title">
+        <h2>TERBARU</h2>
+        <button class="btn-small">SEMUA</button>
+      </div>
+
+      <div class="grid" id="newGrid">
+        <!-- Card example -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1542204165-887f3f93f6f0?w=600&q=80" alt="movie">
+          <div class="badge star">★ 3.9</div>
+          <div class="badge hd" style="right:8px;left:auto">HD</div>
+          <div class="title">Algea: God of Pain</div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1517604931442-7c7f9ff7b9c1?w=600&q=80" alt="movie">
+          <div class="badge star">★ 3.4</div>
+          <div class="badge hd" style="right:8px;left:auto">HD</div>
+          <div class="title">Mouseboat</div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=600&q=80" alt="movie">
+          <div class="badge star">★ 4.6</div>
+          <div class="badge hd" style="right:8px;left:auto">HD</div>
+          <div class="title">Bait (2025)</div>
+        </div>
+
+        <!-- duplicate some to show horizontal scroll -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1542204165-887f3f93f6f0?w=600&q=80" alt="movie">
+          <div class="badge star">★ 5.1</div>
+          <div class="badge hd" style="right:8px;left:auto">HD</div>
+          <div class="title">Night Drive</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- more sections can be added similarly -->
+
+  </main>
+
+  <div class="bottom-nav" role="navigation">
+    <div class="nav-item active" onclick="selectNav(this)">
+      <div class="icon">★</div>
+      <div class="label">Terpopuler</div>
+    </div>
+    <div class="nav-item" onclick="selectNav(this)">
+      <div class="icon">❤</div>
+      <div class="label">Series</div>
+    </div>
+    <div class="nav-item" onclick="selectNav(this)">
+      <div class="icon">🎞</div>
+      <div class="label">Film</div>
+    </div>
+    <div class="nav-item" onclick="selectNav(this)">
+      <div class="icon">⚗</div>
+      <div class="label">Filter</div>
+    </div>
+    <div class="nav-item" onclick="selectNav(this)">
+      <div class="icon">↗</div>
+      <div class="label">Share</div>
+    </div>
+  </div>
+
+  <script>
+    // simple nav select
+    function selectNav(el){
+      document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // basic autoplay carousel scroll
+    (function autoplayCarousel(){
+      const c = document.getElementById('carousel');
+      if(!c) return;
+      let pos = 0;
+      const max = c.scrollWidth - c.clientWidth;
+      let dir = 1;
+      setInterval(()=>{
+        pos += dir * 220;
+        if(pos >= max) { pos = max; dir = -1; }
+        if(pos <= 0) { pos = 0; dir = 1; }
+        c.scrollTo({left: pos, behavior:'smooth'});
+      }, 3000);
+    })();
+
+    // accessibility: keyboard left-right for carousel
+    document.addEventListener('keydown', (e)=>{
+      const c = document.getElementById('carousel');
+      if(!c) return;
+      if(e.key === 'ArrowRight') c.scrollBy({left:200, behavior:'smooth'});
+      if(e.key === 'ArrowLeft') c.scrollBy({left:-200, behavior:'smooth'});
+    });
+
+    // lazy loading images (lightweight)
+    if('loading' in HTMLImageElement.prototype){
+      document.querySelectorAll('img').forEach(img=>img.setAttribute('loading','lazy'));
+    }
+  </script>
 </body>
 </html>
